@@ -58,7 +58,7 @@
             Plane, Car, Heart, Sun, Moon, Coffee, Camera, Info, 
             CheckCircle, Star, Users, Map as MapIcon, ChevronRight, 
             ChevronLeft, Navigation, Edit3, ShoppingBag, Utensils, 
-            AlertTriangle, ArrowRight, BedDouble, Quote, Clock
+            AlertTriangle, ArrowRight, BedDouble, Quote, Clock, ChevronDown
         } from 'lucide-react';
 
         // ==========================================
@@ -227,7 +227,7 @@
                     <div className="mx-auto bg-white/10 backdrop-blur-md p-4 rounded-full mb-6 w-fit">
                         <Heart className="w-8 h-8 text-rose-300 fill-current animate-pulse" />
                     </div>
-                    <div className="uppercase tracking-widest text-rose-300 text-sm font-bold mb-4">Trip Plan For</div>
+                    <div className="uppercase tracking-widest text-rose-300 text-sm font-bold mb-4">Honeymoon Plan For</div>
                     <h1 className="text-4xl font-serif font-bold mb-2 text-white">{data.coupleName}</h1>
                     <div className="h-1 w-20 bg-rose-500 mx-auto my-6 rounded-full"></div>
                     <p className="text-stone-300 text-lg mb-8 font-light">
@@ -360,102 +360,121 @@
             );
         };
 
-        const DayCard = ({ data }) => (
-            <div className="h-full flex flex-col bg-stone-50">
-                {/* Header with Image Support */}
-                <div className={`relative shrink-0 shadow-md z-10 pt-28 px-6 pb-12 text-white overflow-hidden ${!data.image ? data.color : ''}`}>
-                    {data.image && (
-                        <>
-                            <img src={data.image} className="absolute inset-0 w-full h-full object-cover" alt={data.city} />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/40"></div>
-                        </>
-                    )}
-                    
-                    <div className="relative z-10">
-                        <div className="text-sm font-medium opacity-90 uppercase tracking-wider mb-1 text-rose-200">Day {data.day}</div>
-                        <h2 className="text-4xl font-serif font-bold shadow-black drop-shadow-lg">{data.city}</h2>
-                        <div className="flex items-center gap-2 mt-2 text-white/90 text-sm font-medium">
-                            <Star className="w-4 h-4 fill-current text-rose-400" />
-                            {data.title}
-                        </div>
-                    </div>
-                </div>
+        const DayCard = ({ data }) => {
+            const [showScrollHint, setShowScrollHint] = useState(true);
 
-                {/* Scrollable Content */}
-                <div className="flex-1 overflow-y-auto px-4 pb-24 bg-stone-50 hide-scrollbar">
-                    <div className="space-y-6 pt-8"> 
+            useEffect(() => {
+                setShowScrollHint(true);
+                const timer = setTimeout(() => {
+                    setShowScrollHint(false);
+                }, 2500);
+                return () => clearTimeout(timer);
+            }, [data]);
+
+            return (
+                <div className="h-full flex flex-col bg-stone-50 relative">
+                    {/* Header with Image Support */}
+                    <div className={`relative shrink-0 shadow-md z-10 pt-28 px-6 pb-12 text-white overflow-hidden ${!data.image ? data.color : ''}`}>
+                        {data.image && (
+                            <>
+                                <img src={data.image} className="absolute inset-0 w-full h-full object-cover" alt={data.city} />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/40"></div>
+                            </>
+                        )}
                         
-                        {/* Logistics */}
-                        <div className="bg-white p-4 rounded-2xl shadow-sm border border-stone-100 flex items-start gap-3">
-                            <div className="bg-stone-100 p-2 rounded-full text-stone-600">
-                                <Car size={18} />
-                            </div>
-                            <div>
-                                <div className="text-xs font-bold text-stone-400 uppercase">Logistics</div>
-                                <div className="text-stone-800 font-medium text-sm">{data.travel}</div>
-                                {data.note && (
-                                    <div className="text-amber-600 text-xs mt-1 flex items-center gap-1">
-                                        <AlertTriangle size={10} /> {data.note}
-                                    </div>
-                                )}
+                        <div className="relative z-10">
+                            <div className="text-sm font-medium opacity-90 uppercase tracking-wider mb-1 text-rose-200">Day {data.day}</div>
+                            <h2 className="text-4xl font-serif font-bold shadow-black drop-shadow-lg">{data.city}</h2>
+                            <div className="flex items-center gap-2 mt-2 text-white/90 text-sm font-medium">
+                                <Star className="w-4 h-4 fill-current text-rose-400" />
+                                {data.title}
                             </div>
                         </div>
+                    </div>
 
-                        {/* Stay */}
-                        <div>
-                            <div className="text-xs font-bold text-stone-400 uppercase mb-2 ml-2">Recommended Stay</div>
-                            <div className="bg-white p-4 rounded-xl border-l-4 border-rose-400 shadow-sm flex flex-col gap-1">
-                                <div className="flex items-center gap-2 font-bold text-stone-800 text-sm">
-                                    <BedDouble className="w-4 h-4 text-rose-500" />
-                                    {data.stayType}
+                    {/* Scroll Hint */}
+                    <div className={`absolute bottom-24 left-1/2 -translate-x-1/2 z-20 transition-opacity duration-700 pointer-events-none ${showScrollHint ? 'opacity-100' : 'opacity-0'}`}>
+                        <div className="bg-rose-500/90 text-white px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1 text-xs font-bold animate-bounce">
+                            Scroll <ChevronDown size={14} />
+                        </div>
+                    </div>
+
+                    {/* Scrollable Content */}
+                    <div className="flex-1 overflow-y-auto px-4 pb-24 bg-stone-50 hide-scrollbar">
+                        <div className="space-y-6 pt-8"> 
+                            
+                            {/* Logistics */}
+                            <div className="bg-white p-4 rounded-2xl shadow-sm border border-stone-100 flex items-start gap-3">
+                                <div className="bg-stone-100 p-2 rounded-full text-stone-600">
+                                    <Car size={18} />
                                 </div>
-                                <div className="text-xs text-stone-500 pl-6">{data.stayDesc}</div>
+                                <div>
+                                    <div className="text-xs font-bold text-stone-400 uppercase">Logistics</div>
+                                    <div className="text-stone-800 font-medium text-sm">{data.travel}</div>
+                                    {data.note && (
+                                        <div className="text-amber-600 text-xs mt-1 flex items-center gap-1">
+                                            <AlertTriangle size={10} /> {data.note}
+                                        </div>
+                                    )}
+                                </div>
                             </div>
-                        </div>
 
-                        {/* Timeline Schedule - Simplified List */}
-                        <div>
-                            <div className="text-xs font-bold text-stone-400 uppercase mb-3 ml-1">Today's Timeline</div>
-                            <div className="space-y-3">
-                                {data.schedule.map((item, idx) => (
-                                    <div 
-                                        key={idx} 
-                                        className={`
-                                            flex gap-4 p-3 rounded-lg transition-all
-                                            ${item.isSignature ? 'bg-rose-50 border border-rose-100' : 'bg-white border border-stone-100 shadow-sm'}
-                                        `}
-                                    >
-                                        {/* Time Column */}
-                                        <div className="w-16 shrink-0 flex flex-col items-center justify-center border-r border-stone-200 pr-3">
-                                            <div className={`text-xs font-bold ${item.isSignature ? 'text-rose-500' : 'text-stone-400'}`}>
-                                                {item.time.split(' ')[0]}
-                                            </div>
-                                            <div className={`text-[10px] font-medium uppercase ${item.isSignature ? 'text-rose-400' : 'text-stone-300'}`}>
-                                                {item.time.split(' ')[1]}
-                                            </div>
-                                        </div>
-
-                                        {/* Content Column */}
-                                        <div className="flex-1">
-                                            <div className="flex items-center gap-2 mb-1">
-                                                {item.isSignature && <Star size={12} className="text-rose-500 fill-current" />}
-                                                <h4 className={`text-sm font-bold ${item.isSignature ? 'text-rose-900' : 'text-stone-800'}`}>
-                                                    {item.title}
-                                                </h4>
-                                            </div>
-                                            <p className={`text-xs leading-relaxed ${item.isSignature ? 'text-rose-700' : 'text-stone-500'}`}>
-                                                {item.desc}
-                                            </p>
-                                        </div>
+                            {/* Stay */}
+                            <div>
+                                <div className="text-xs font-bold text-stone-400 uppercase mb-2 ml-2">Recommended Stay</div>
+                                <div className="bg-white p-4 rounded-xl border-l-4 border-rose-400 shadow-sm flex flex-col gap-1">
+                                    <div className="flex items-center gap-2 font-bold text-stone-800 text-sm">
+                                        <BedDouble className="w-4 h-4 text-rose-500" />
+                                        {data.stayType}
                                     </div>
-                                ))}
+                                    <div className="text-xs text-stone-500 pl-6">{data.stayDesc}</div>
+                                </div>
                             </div>
-                        </div>
 
+                            {/* Timeline Schedule - Simplified List */}
+                            <div>
+                                <div className="text-xs font-bold text-stone-400 uppercase mb-3 ml-1">Today's Timeline</div>
+                                <div className="space-y-3">
+                                    {data.schedule.map((item, idx) => (
+                                        <div 
+                                            key={idx} 
+                                            className={`
+                                                flex gap-4 p-3 rounded-lg transition-all
+                                                ${item.isSignature ? 'bg-rose-50 border border-rose-100' : 'bg-white border border-stone-100 shadow-sm'}
+                                            `}
+                                        >
+                                            {/* Time Column */}
+                                            <div className="w-16 shrink-0 flex flex-col items-center justify-center border-r border-stone-200 pr-3">
+                                                <div className={`text-xs font-bold ${item.isSignature ? 'text-rose-500' : 'text-stone-400'}`}>
+                                                    {item.time.split(' ')[0]}
+                                                </div>
+                                                <div className={`text-[10px] font-medium uppercase ${item.isSignature ? 'text-rose-400' : 'text-stone-300'}`}>
+                                                    {item.time.split(' ')[1]}
+                                                </div>
+                                            </div>
+
+                                            {/* Content Column */}
+                                            <div className="flex-1">
+                                                <div className="flex items-center gap-2 mb-1">
+                                                    {item.isSignature && <Star size={12} className="text-rose-500 fill-current" />}
+                                                    <h4 className={`text-sm font-bold ${item.isSignature ? 'text-rose-900' : 'text-stone-800'}`}>
+                                                        {item.title}
+                                                    </h4>
+                                                </div>
+                                                <p className={`text-xs leading-relaxed ${item.isSignature ? 'text-rose-700' : 'text-stone-500'}`}>
+                                                    {item.desc}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
-            </div>
-        );
+            );
+        };
 
         // --- Main App ---
 
