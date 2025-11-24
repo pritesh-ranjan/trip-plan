@@ -58,7 +58,7 @@
             Plane, Car, Heart, Sun, Moon, Coffee, Camera, Info, 
             CheckCircle, Star, Users, Map as MapIcon, ChevronRight, 
             ChevronLeft, Navigation, Edit3, ShoppingBag, Utensils, 
-            AlertTriangle, ArrowRight, BedDouble, Quote, Clock, ChevronDown
+            AlertTriangle, ArrowRight, BedDouble, Quote, Clock, ChevronDown, Train
         } from 'lucide-react';
 
         // ==========================================
@@ -70,7 +70,7 @@
                 tripTitle: "Rajasthan Royal Retreat",
                 duration: "7 Days",
                 startCity: "Kolkata",
-                routeSummary: "Jaipur-Jaisalmer-Mt Abu"
+                routeSummary: "Jaipur-Jodhpur-Jaisalmer"
             },
             journeyCard: {
                 image: "https://images.unsplash.com/photo-1599661046289-481fac1f466e?auto=format&fit=crop&w=800&q=80",
@@ -116,36 +116,74 @@
                 },
                 {
                     day: 3,
-                    city: "Jaisalmer",
-                    coords: [26.9157, 70.9083],
-                    title: "The Golden Fort",
-                    image: "https://images.unsplash.com/photo-1572886733226-c51323812959?auto=format&fit=crop&w=800&q=80",
-                    color: "bg-amber-600",
-                    travel: "Flight or Sleeper Bus (Overnight)",
-                    note: "Flight is seasonal; check schedule or use Sleeper Bus/Train.",
-                    stayType: "Heritage Stay Inside Fort",
-                    stayDesc: "Live like royalty within the only living fort in the world.",
+                    city: "Jodhpur",
+                    coords: [26.2389, 73.0243],
+                    title: "The Blue City",
+                    image: "https://images.unsplash.com/photo-1534759846116-5799c33ce36a?auto=format&fit=crop&w=800&q=80",
+                    color: "bg-blue-800",
+                    travel: "Train: Jaipur → Jodhpur (Vande Bharat)",
+                    note: "Enjoy the premium rail experience.",
+                    stayType: "Luxury Boutique Hotel (RAAS)",
+                    stayDesc: "Stay in a restored haveli with breathtaking views of the Mehrangarh Fort.",
                     schedule: [
-                        { time: "12:00 PM", title: "Arrival & Transfer", desc: "Check into your fort hotel." },
-                        { time: "03:00 PM", title: "Relaxed Fort Walk", desc: "Explore the ancient laneways." },
-                        { time: "05:30 PM", title: "Sunset at Jostel Cafe", desc: "Best sunset view from fort walls.", isSignature: true },
-                        { time: "07:30 PM", title: "Govt. Bhang Shop", desc: "Cultural experience near fort.", isSignature: true },
-                        { time: "09:00 PM", title: "Rooftop Dinner", desc: "Dining with a view of the illuminated fort." }
+                        { time: "06:00 AM", title: "Vande Bharat Express", desc: "Scenic morning train journey to Jodhpur." },
+                        { time: "11:00 AM", title: "Arrival & Check-in", desc: "Transfer to your heritage hotel." },
+                        { time: "03:00 PM", title: "Toorji Ka Jhalra", desc: "Visit the famous stepwell square." },
+                        { time: "05:30 PM", title: "Blue City Walk", desc: "Guided walk through the indigo-hued streets.", isSignature: true },
+                        { time: "08:00 PM", title: "Dinner at Indique", desc: "Rooftop dining with illuminated fort views.", isSignature: true }
                     ]
                 },
                 {
                     day: 4,
+                    city: "Jodhpur to Jaisalmer",
+                    coords: [26.9157, 70.9083], // Jaisalmer
+                    title: "Fort to Desert",
+                    image: "https://images.unsplash.com/photo-1590050752117-238cb0fb9f6f?auto=format&fit=crop&w=800&q=80",
+                    color: "bg-amber-700",
+                    travel: "Private Car: Jodhpur → Jaisalmer (~4.5 hrs)",
+                    note: "Comfortable drive through the desert landscape.",
+                    stayType: "Heritage Stay Inside Fort",
+                    stayDesc: "Live like royalty within the only living fort in the world.",
+                    schedule: [
+                        { time: "09:00 AM", title: "Mehrangarh Fort", desc: "Explore one of India's largest forts.", isSignature: true },
+                        { time: "12:30 PM", title: "Drive to Jaisalmer", desc: "Private car transfer." },
+                        { time: "05:30 PM", title: "Arrival in Golden City", desc: "Check-in to your fort hotel." },
+                        { time: "07:30 PM", title: "Sunset at Gadisar Lake", desc: "Boating and peaceful evening views." },
+                        { time: "09:00 PM", title: "Dinner at Trio", desc: "Famous for traditional Laal Maas." }
+                    ]
+                },
+                {
+                    day: 5,
+                    city: "Jaisalmer",
+                    coords: [26.9157, 70.9083],
+                    title: "Living History",
+                    image: "https://images.unsplash.com/photo-1572886733226-c51323812959?auto=format&fit=crop&w=800&q=80",
+                    color: "bg-amber-600",
+                    travel: "Local Sightseeing",
+                    note: "Wear a hat, it gets sunny!",
+                    stayType: "Heritage Stay Inside Fort",
+                    stayDesc: "Continue your stay in the Golden Fort.",
+                    schedule: [
+                        { time: "10:00 AM", title: "Jaisalmer Fort Tour", desc: "Walk the laneways of the Sonar Quila." },
+                        { time: "01:00 PM", title: "Patwon Ki Haveli", desc: "Intricate stone carving masterpiece." },
+                        { time: "04:30 PM", title: "Sunset at Vyas Chhatri", desc: "Golden hour photography spot.", isSignature: true },
+                        { time: "07:00 PM", title: "Govt. Bhang Shop", desc: "Cultural experience near the fort.", isSignature: true },
+                        { time: "08:30 PM", title: "Leisure Dinner", desc: "Try local Ker Sangri." }
+                    ]
+                },
+                {
+                    day: 6,
                     city: "Thar Desert",
                     coords: [26.6150, 70.7300],
                     title: "Dunes & Stars",
                     image: "https://images.unsplash.com/photo-1542302306-03f47e30733d?auto=format&fit=crop&w=800&q=80",
                     color: "bg-stone-800",
                     travel: "Jeep Transfer (Khuri or Sam)",
-                    note: "Khuri offers better privacy than Sam.",
+                    note: "Choose Khuri for privacy, Sam for adventure.",
                     stayType: "Desert Camp (Khuri or Sam)",
-                    stayDesc: "Choose Khuri for peace & privacy, or Sam for adventure sports.",
+                    stayDesc: "Luxury tents or sleeping under the open sky.",
                     schedule: [
-                        { time: "02:00 PM", title: "Transfer to Dunes", desc: "Jeep ride to camp." },
+                        { time: "02:00 PM", title: "Transfer to Dunes", desc: "Jeep ride to your desert camp." },
                         { time: "05:00 PM", title: "Private Camel Safari", desc: "Deep desert privacy away from tourist spots.", isSignature: true },
                         { time: "07:00 PM", title: "Sunset on Quiet Dunes", desc: "Watch the sun dip below the sand." },
                         { time: "09:00 PM", title: "Bonfire & Folk Music", desc: "Traditional Rajasthani performance." },
@@ -153,60 +191,22 @@
                     ]
                 },
                 {
-                    day: 5,
-                    city: "Mount Abu",
-                    coords: [24.5926, 72.7156],
-                    title: "Hill Oasis",
-                    image: "https://images.unsplash.com/photo-1698763028328-9745778a48b9?auto=format&fit=crop&w=800&q=80",
-                    color: "bg-emerald-800",
-                    travel: "Cab/Bus: Jaisalmer → Mt Abu (~8-9 hrs)",
-                    note: "Start early (7 AM) for the long drive.",
-                    stayType: "Colonial Heritage Bungalow",
-                    stayDesc: "Charming British-era architecture with panoramic hill views.",
-                    schedule: [
-                        { time: "07:00 AM", title: "Depart Jaisalmer", desc: "Long scenic drive." },
-                        { time: "01:00 PM", title: "Highway Lunch", desc: "Stop at a midway restaurant." },
-                        { time: "04:30 PM", title: "Check-in & Refresh", desc: "Arrive at Mt Abu." },
-                        { time: "06:00 PM", title: "Evening by Nakki Lake", desc: "Relax after the long drive.", isSignature: true },
-                        { time: "08:30 PM", title: "Dinner at Mulberry Tree", desc: "Fine dining garden setting.", isSignature: true }
-                    ]
-                },
-                {
-                    day: 6,
-                    city: "Mount Abu",
-                    coords: [24.5926, 72.7156],
-                    title: "Temples",
-                    image: "https://images.unsplash.com/photo-1631780987330-96da93691905?auto=format&fit=crop&w=800&q=80",
-                    color: "bg-emerald-600",
-                    travel: "Rent a Bike or Cab",
-                    note: "Visit temples early to avoid crowds.",
-                    stayType: "Colonial Heritage Bungalow",
-                    stayDesc: "Relax in the cool climate of the hills.",
-                    schedule: [
-                        { time: "09:00 AM", title: "Dilwara Jain Temples", desc: "Exquisite marble carvings." },
-                        { time: "11:30 AM", title: "Achalgarh Fort Trek", desc: "Views and history." },
-                        { time: "04:30 PM", title: "Private Boat Ride", desc: "Romantic ride on Nakki Lake.", isSignature: true },
-                        { time: "06:00 PM", title: "Sunset at Toad Rock", desc: "Trek for the best view point.", isSignature: true },
-                        { time: "08:30 PM", title: "Farewell Dinner", desc: "Celebrate the trip end." }
-                    ]
-                },
-                {
                     day: 7,
                     city: "Departure",
-                    coords: [23.0225, 72.5714],
+                    coords: [26.9124, 75.7873], // Back to Jaipur
                     title: "Journey Home",
                     image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80",
                     color: "bg-slate-800",
-                    travel: "Cab to Ahmedabad → Fly to Kolkata",
-                    note: "Ahmedabad offers direct flights. Sightseeing needs evening flight.",
-                    stayType: "Airport Transit Hotel",
-                    stayDesc: "Convenient stay if needed before flight.",
+                    travel: "Flight: Jaisalmer → Jaipur → Kolkata",
+                    note: "Check flight schedules as JSA flights are seasonal.",
+                    stayType: "Home Sweet Home",
+                    stayDesc: "End of a beautiful journey.",
                     schedule: [
-                        { time: "09:00 AM", title: "Leisurely Breakfast", desc: "Check-out." },
-                        { time: "10:00 AM", title: "Drive to Ahmedabad", desc: "Approx 5 hours." },
-                        { time: "02:00 PM", title: "Lunch at Patang (AMD)", desc: "Revolving restaurant views.", isSignature: true },
-                        { time: "04:00 PM", title: "Adalaj Stepwell", desc: "Ancient architecture visit.", isSignature: true },
-                        { time: "07:00 PM", title: "Flight to Kolkata", desc: "Safe travels home!" }
+                        { time: "10:00 AM", title: "Airport Transfer", desc: "Drive to Jaisalmer Airport (JSA)." },
+                        { time: "12:30 PM", title: "Flight to Jaipur", desc: "Short domestic flight." },
+                        { time: "03:00 PM", title: "Layover in Jaipur", desc: "Grab a quick meal or shop at airport." },
+                        { time: "05:30 PM", title: "Flight to Kolkata", desc: "Board connection to CCU." },
+                        { time: "08:00 PM", title: "Arrival in Kolkata", desc: "Safe travels home!" }
                     ]
                 }
             ]
@@ -312,6 +312,7 @@
                     if (colorClass.includes('emerald')) cssColor = '#059669';
                     if (colorClass.includes('slate')) cssColor = '#475569';
                     if (colorClass.includes('stone')) cssColor = '#57534e';
+                    if (colorClass.includes('blue')) cssColor = '#1e40af';
                     if (colorClass.includes('rose-900')) cssColor = '#881337';
 
                     return L.divIcon({
